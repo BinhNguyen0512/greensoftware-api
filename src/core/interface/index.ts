@@ -1,3 +1,3 @@
-import Route from "./routes.interface"
+import Route from "./routes.interface";
 
-export {Route}
+export { Route };
