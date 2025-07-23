@@ -1,3 +1,4 @@
+import Logger from "./logger";
 import validateENV from "./validate_env";
 
-export { validateENV };
+export { Logger, validateENV };
