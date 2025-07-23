@@ -1,9 +1,11 @@
 import { Route } from "@core/interface";
 import errorMiddleware from "@core/middleware/error.middleware";
+import { Logger } from "@core/utils";
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 import hpp from "hpp";
+import mongoose from "mongoose";
 import morgan from "morgan";
 
 class App {
@@ -15,13 +17,14 @@ class App {
     this.port = process.env.PORT || 3000;
 
     this.initializeMiddleware();
+    this.connectToDatabase();
     this.initializeRoutes(routes);
     this.initializeErrorMiddleware();
   }
 
   public listen() {
     this.app.listen(this.port, () => {
-      console.log(`Server is listening on port ${this.port}`);
+      Logger.info(`Server is listening on port ${this.port}`);
     });
   }
 
@@ -52,6 +55,21 @@ class App {
 
   private initializeErrorMiddleware() {
     this.app.use(errorMiddleware);
+  }
+
+  private connectToDatabase() {
+    const connectString = process.env.MONGODB_URI;
+
+    if (!connectString) {
+      Logger.error("Connection string is valid");
+      return;
+    }
+
+    mongoose.connect(connectString, {}).catch((reason) => {
+      Logger.error(reason);
+    });
+
+    Logger.info("Database connected...");
   }
 }
 

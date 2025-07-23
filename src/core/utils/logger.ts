@@ -11,4 +11,10 @@ const Logger: winston.Logger = winston.createLogger({
   format: winston.format.combine(winston.format.colorize({ all: true }), winston.format.simple())
 });
 
+Logger.add(
+  new winston.transports.Console({
+    format: winston.format.simple()
+  })
+);
+
 export default Logger;
