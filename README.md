@@ -1,5 +1,7 @@
 Using expressjs
+
 File structure followed MCV + Service layer:
+
 1. DTO: data transfer object
 2. Validations: custom class validatior
 3. Interface: typescript definiton 
