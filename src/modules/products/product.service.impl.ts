@@ -21,7 +21,7 @@ export class ProductService implements IProductService {
 
       return createProduct;
     } catch (error) {
-      throw new HttpException(500, `Update product failed: ${error}`);
+      throw new HttpException(500, `${error}`);
     }
   }
 
@@ -43,7 +43,7 @@ export class ProductService implements IProductService {
 
       return product;
     } catch (error) {
-      throw new HttpException(500, `Update product failed: ${error}`);
+      throw new HttpException(500, `${error}`);
     }
   }
   public async getProductDetailByAlias(alias: string): Promise<IProduct> {
@@ -56,7 +56,7 @@ export class ProductService implements IProductService {
 
       return product;
     } catch (error) {
-      throw new HttpException(500, `Update product failed: ${error}`);
+      throw new HttpException(500, `${error}`);
     }
   }
 
@@ -102,7 +102,7 @@ export class ProductService implements IProductService {
 
       return updateProduct;
     } catch (error) {
-      throw new HttpException(500, `Update product failed: ${error}`);
+      throw new HttpException(500, `${error}`);
     }
   }
 
@@ -124,7 +124,7 @@ export class ProductService implements IProductService {
 
       return deleteProduct;
     } catch (error) {
-      throw new HttpException(500, `Update product failed: ${error}`);
+      throw new HttpException(500, `${error}`);
     }
   }
 }
